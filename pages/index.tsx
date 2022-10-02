@@ -1,7 +1,9 @@
+import { H1 } from "@blueprintjs/core";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Background from "../components/background";
+import Weather from "../components/weather";
 
 const Home: NextPage = () => {
   return (
@@ -12,7 +14,8 @@ const Home: NextPage = () => {
       </Head>
       <Background />
       <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center z-10">
-        <h1 className="text-6xl font-bold">Dashboard</h1>
+        <H1 className="text-6xl font-bold">Dashboard</H1>
+        <Weather />
       </main>
     </div>
   );

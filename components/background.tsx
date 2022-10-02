@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 // get a background image from the background api
@@ -12,11 +13,13 @@ export default function Background() {
       });
   }, []);
   console.log(background);
+
   return (
     <div className="fixed top-0 left-0 w-full h-full z-0">
-      <img
-        src={`/images/${background}`}
+      <Image
+        src={background !== "" ? `/images/${background}` : "/images/1.jpg"}
         className="w-full h-full object-cover"
+        layout="fill"
       />
     </div>
   );

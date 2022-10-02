@@ -6,5 +6,9 @@ import path from "path";
 export default (req: NextApiRequest, res: NextApiResponse) => {
   const images = fs.readdirSync(path.join(process.cwd(), "public/images"));
   const image = images[Math.floor(Math.random() * images.length)];
-  res.status(200).json({ image });
+  const resToSend = {
+    image: image || "1.jpg",
+    images: images || [],
+  };
+  res.status(200).json(resToSend);
 };

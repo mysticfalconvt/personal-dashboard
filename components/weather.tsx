@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -28,30 +29,17 @@ interface CurrentWeather {
 }
 
 export default function Weather() {
-  const [currentWeather, setCurrentWeather] = useState({} as CurrentWeather);
-  const [update, setUpdate] = useState(true);
-  // get a new background image every 1 minute
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setUpdate(!update);
-    }, 60000);
-    return () => clearInterval(interval);
-  }, [update]);
+  const { data } = useQuery(["weather", "forecast"], () =>
+    fetch("api/weather").then((res) => res.json())
+  );
+  const currentWeather = data?.current as CurrentWeather;
 
-  useEffect(() => {
-    if (update) {
-      fetch("api/weather")
-        .then((res) => res.json())
-        .then((data) => {
-          setCurrentWeather(data.current as CurrentWeather);
-        });
-    }
-  }, [update]);
-  if (!currentWeather.weather) return <div>Loading...</div>;
-  console.log(currentWeather);
+  if (!currentWeather?.weather) return <div>Loading...</div>;
+  // console.log(currentWeather);
   const iconUrl = `http://openweathermap.org/img/wn/${currentWeather.weather[0].icon}.png`;
   //   convert temp from kelvin to fahrenheit
   const currentTemp = Math.round(currentWeather.main.temp * (9 / 5) - 459.67);
+
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="text-4xl font-bold">Current Weather for Derby VT</div>

@@ -33,6 +33,7 @@ export default function Weather() {
     fetch("api/weather").then((res) => res.json())
   );
   const currentWeather = data?.current as CurrentWeather;
+  const forecast = data?.forecast;
 
   if (!currentWeather?.weather) return <div>Loading...</div>;
   // console.log(currentWeather);

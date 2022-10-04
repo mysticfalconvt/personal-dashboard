@@ -5,12 +5,15 @@ import Head from "next/head";
 import Background from "../components/background";
 import CalendarList from "../components/calendarList";
 import Weather from "../components/weather";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import DisplayTodoistShoppingList from "../components/displayTodoistShoppingList";
 
 const Home: NextPage = () => {
   const queryClient = new QueryClient();
 
   return (
     <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
       <div className="flex min-h-screen flex-col items-center justify-center py-2">
         <Head>
           <title>Rob's Stuff</title>
@@ -21,6 +24,7 @@ const Home: NextPage = () => {
           <H1 className="text-6xl font-bold">Dashboard</H1>
           <Weather />
           {/* <CalendarList /> */}
+          <DisplayTodoistShoppingList />
         </main>
       </div>
     </QueryClientProvider>

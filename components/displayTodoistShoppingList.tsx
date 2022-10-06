@@ -31,7 +31,7 @@ export default function DisplayTodoistShoppingList() {
       data[key].includes(task)
     )[0];
   });
-  console.log(otherTasks);
+  // console.log(otherTasks);
 
   return (
     <div className="flex flex-col items-center justify-center">

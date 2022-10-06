@@ -23,7 +23,7 @@ const Home: NextPage = () => {
         <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center z-10">
           <H1 className="text-6xl font-bold">Dashboard</H1>
           <Weather />
-          {/* <CalendarList /> */}
+          <CalendarList />
           <DisplayTodoistShoppingList />
         </main>
       </div>

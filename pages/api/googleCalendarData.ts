@@ -45,10 +45,20 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     singleEvents: true,
     orderBy: "startTime",
   });
+  const familyCalendar = await calendar.events.list({
+    auth: jwt,
+    calendarId: familyCalendarId,
+
+    timeMin: new Date().toISOString(),
+    maxResults: 50,
+    singleEvents: true,
+    orderBy: "startTime",
+  });
+
   const personalEvents = personalCalendar?.data.items || [];
   const workEvents = workCalendar?.data.items || [];
-
-  const allEvents = [...personalEvents, ...workEvents];
+  const familyEvents = familyCalendar?.data.items || [];
+  const allEvents = [...personalEvents, ...workEvents, ...familyEvents];
   const sortedEvents = allEvents.sort((a, b) => {
     const aDate = new Date(a?.start?.dateTime || "Jan 1, 1970");
     const bDate = new Date(b?.start?.dateTime || "Jan 1, 1970");

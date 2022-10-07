@@ -6,7 +6,6 @@ export default function CalendarList() {
     return fetch("/api/googleCalendarData").then((res) => res.json());
   });
   const calendarList = data?.events;
-  console.log(calendarList);
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="text-4xl font-bold">Calendar List</div>

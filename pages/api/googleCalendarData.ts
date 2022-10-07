@@ -45,13 +45,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     singleEvents: true,
     orderBy: "startTime",
   });
-  const personalEvents = personalCalendar?.data.items;
-  const workEvents = workCalendar?.data.items;
+  const personalEvents = personalCalendar?.data.items || [];
+  const workEvents = workCalendar?.data.items || [];
 
   const allEvents = [...personalEvents, ...workEvents];
   const sortedEvents = allEvents.sort((a, b) => {
-    const aDate = new Date(a.start.dateTime);
-    const bDate = new Date(b.start.dateTime);
+    const aDate = new Date(a?.start?.dateTime || "Jan 1, 1970");
+    const bDate = new Date(b?.start?.dateTime || "Jan 1, 1970");
     return aDate.getTime() - bDate.getTime();
   });
 

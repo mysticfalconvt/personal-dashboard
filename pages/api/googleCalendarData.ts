@@ -10,6 +10,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     "https://www.googleapis.com/auth/calendar.readonly",
     "https://www.googleapis.com/auth/calendar.events.readonly",
   ];
+  const timeMin = new Date();
+  const timeMax = new Date(new Date().setDate(new Date().getDate() + 14));
 
   const credentials = JSON.parse(process.env.CREDENTIALS || "");
 
@@ -31,7 +33,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     auth: jwt,
     calendarId: personalCalendarId,
 
-    timeMin: new Date().toISOString(),
+    timeMin: timeMin.toISOString(),
+    timeMax: timeMax.toISOString(),
     maxResults: 50,
     singleEvents: true,
     orderBy: "startTime",
@@ -40,7 +43,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     auth: jwt,
     calendarId: workCalendarId,
 
-    timeMin: new Date().toISOString(),
+    timeMin: timeMin.toISOString(),
+    timeMax: timeMax.toISOString(),
     maxResults: 50,
     singleEvents: true,
     orderBy: "startTime",
@@ -49,7 +53,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     auth: jwt,
     calendarId: familyCalendarId,
 
-    timeMin: new Date().toISOString(),
+    timeMin: timeMin.toISOString(),
+    timeMax: timeMax.toISOString(),
     maxResults: 50,
     singleEvents: true,
     orderBy: "startTime",

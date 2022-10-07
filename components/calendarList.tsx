@@ -12,8 +12,12 @@ export default function CalendarList() {
       <div className="text-2xl font-bold">
         {calendarList?.map((item: any) => {
           const date = new Date(item.start.dateTime);
+          const isToday = date.toDateString() === new Date().toDateString();
           return (
-            <div key={item.id}>
+            <div
+              key={item.id}
+              className={isToday ? "bg-slate-50 opacity-30" : ""}
+            >
               {item.summary} - {date.toLocaleDateString()}
             </div>
           );

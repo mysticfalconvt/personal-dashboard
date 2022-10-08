@@ -11,10 +11,12 @@ export function DayCalendar({ eventList }: CalendarProps) {
     eventList?.map((event) => {
       const startTime = new Date(event.start.dateTime);
       const endTime = new Date(event.end.dateTime);
+
       return {
         title: event.summary,
         start: startTime,
         end: endTime,
+        color: event.eventColor,
       };
     }) || [];
   return (
@@ -43,6 +45,7 @@ export function MonthCalendar({ eventList }: CalendarProps) {
         title: event.summary,
         start: startTime,
         end: endTime,
+        color: event.eventColor,
       };
     }) || [];
   return (

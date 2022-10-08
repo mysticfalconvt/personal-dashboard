@@ -61,9 +61,21 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     orderBy: "startTime",
   });
 
-  const personalEvents = personalCalendar?.data.items || [];
-  const workEvents = workCalendar?.data.items || [];
-  const familyEvents = familyCalendar?.data.items || [];
+  const personalEvents =
+    personalCalendar?.data.items?.map((event: any) => {
+      event.eventColor = "blue";
+      return event;
+    }) || [];
+  const workEvents =
+    workCalendar?.data.items?.map((event: any) => {
+      event.eventColor = "red";
+      return event;
+    }) || [];
+  const familyEvents =
+    familyCalendar?.data.items?.map((event: any) => {
+      event.eventColor = "orange";
+      return event;
+    }) || [];
   const allEvents = [...personalEvents, ...workEvents, ...familyEvents];
   const sortedEvents = allEvents.sort((a, b) => {
     const aDate = new Date(a?.start?.dateTime || "Jan 1, 1970");

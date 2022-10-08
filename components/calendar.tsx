@@ -29,7 +29,7 @@ const getFormattedEvents = (eventList: any[]): Event[] => {
 };
 
 export function DayCalendar({ eventList }: CalendarProps) {
-  console.log(eventList);
+  //   console.log(eventList);
   const formattedEventList =
     eventList && eventList.length > 0 ? getFormattedEvents(eventList) : [];
   return (
@@ -49,7 +49,7 @@ export function DayCalendar({ eventList }: CalendarProps) {
 }
 
 export function MonthCalendar({ eventList }: CalendarProps) {
-  console.log(eventList);
+  //   console.log(eventList);
   const formattedEventList =
     eventList && eventList.length > 0 ? getFormattedEvents(eventList) : [];
   return (

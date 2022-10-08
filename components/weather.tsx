@@ -1,6 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import Image from "next/image";
-import { useEffect, useState } from "react";
 
 interface CurrentWeather {
   weather: {
@@ -34,12 +32,26 @@ export default function Weather() {
   );
   const currentWeather = data?.current as CurrentWeather;
   const forecast = data?.forecast;
-
+  // console.log(data);
   if (!currentWeather?.weather) return <div>Loading...</div>;
   // console.log(currentWeather);
   const iconUrl = `http://openweathermap.org/img/wn/${currentWeather.weather[0].icon}.png`;
   //   convert temp from kelvin to fahrenheit
   const currentTemp = Math.round(currentWeather.main.temp * (9 / 5) - 459.67);
+  const futureWeather =
+    forecast?.list
+      ?.map((chunk: any) => {
+        const date = new Date(chunk.dt * 1000);
+        const Icon = `http://openweathermap.org/img/wn/${chunk.weather[0].icon}.png`;
+        const temp = Math.round(chunk.main.temp * (9 / 5) - 459.67);
+        return {
+          date,
+          Icon,
+          temp,
+        };
+      })
+      .slice(0, 9) || [];
+  // console.log(futureWeather);
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -56,6 +68,18 @@ export default function Weather() {
       </div>
       <div className="text-1xl ">Humidity: {currentWeather.main.humidity}%</div>
       <div className="text-1xl ">Wind: {currentWeather.wind.speed}mph</div>
+      <div className="text-2xl ">Future</div>
+      <div className="flex flex-col">
+        {futureWeather.map((chunk: any) => {
+          return (
+            <div className="flex flex-row align-middle justify-center">
+              <div>{chunk.date.toLocaleTimeString()} </div>
+              <div> - {chunk.temp} °F </div>
+              <img src={chunk.Icon} className="justify-center" />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

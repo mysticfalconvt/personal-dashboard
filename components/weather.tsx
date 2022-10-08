@@ -72,10 +72,15 @@ export default function Weather() {
       <div className="flex flex-col">
         {futureWeather.map((chunk: any) => {
           return (
-            <div className="flex flex-row align-middle justify-center">
-              <div>{chunk.date.toLocaleTimeString()} </div>
+            <div className="flex flex-row items-center justify-center">
+              <div>
+                {chunk.date.toLocaleTimeString([], {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}{" "}
+              </div>
               <div> - {chunk.temp} °F </div>
-              <img src={chunk.Icon} className="justify-center" />
+              <img src={chunk.Icon} />
             </div>
           );
         })}

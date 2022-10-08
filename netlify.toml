@@ -1,3 +1,0 @@
-[build]
-  command = "yarn next build"
-  publish = ".next"

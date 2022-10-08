@@ -11,7 +11,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     "https://www.googleapis.com/auth/calendar.events.readonly",
   ];
   // min is yesterday and max is 2 weeks from now
-  const timeMin = new Date(new Date().setDate(new Date().getDate() - 1));
+  const timeMin = new Date(new Date().setDate(new Date().getDate() - 7));
   const timeMax = new Date(new Date().setDate(new Date().getDate() + 14));
 
   const credentials = JSON.parse(process.env.CREDENTIALS || "");

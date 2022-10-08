@@ -43,7 +43,7 @@ export default function Weather() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="text-4xl font-bold">Current Weather for Derby VT</div>
+      {/* <div className="text-4xl font-bold">Current Weather for Derby VT</div> */}
       <img src={iconUrl} className="justify-center" />
       <div className="text-2xl font-bold">
         {currentWeather.weather[0].description}

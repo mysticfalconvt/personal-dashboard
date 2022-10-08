@@ -22,11 +22,7 @@ const Home: NextPage = () => {
         <Background />
         <main className="flex w-full flex-1 flex-col items-center justify-start px-20 text-center z-10">
           <H1 className="text-6xl font-bold">Dashboard</H1>
-          <div className="grid grid-cols-3 gap-4 items-start">
-            <CalendarList />
-            <Weather />
-            <DisplayTodoistShoppingList />
-          </div>
+          <CalendarList />
         </main>
       </div>
     </QueryClientProvider>

@@ -34,9 +34,9 @@ export default function DisplayTodoistShoppingList() {
   // console.log(otherTasks);
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <div className="text-4xl font-bold">Todoist Shopping List</div>
-      <div className="text-2xl font-bold">
+    <div className="flex flex-col items-center justify-center gap-11 ">
+      <div className="text-2xl ">
+        <div className="text-3xl font-bold">Alexa Shopping List</div>
         {shoppingList?.map((item: any) => {
           const date = new Date(item.createdAt);
           return (
@@ -45,6 +45,9 @@ export default function DisplayTodoistShoppingList() {
             </div>
           );
         })}
+      </div>
+      <div className="text-1xl ">
+        <div className="text-3xl font-bold">Other Tasks</div>
         {otherTasks?.map((item: any) => {
           const date = new Date(item.createdAt);
           return (

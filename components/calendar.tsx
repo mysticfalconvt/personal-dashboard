@@ -5,7 +5,7 @@ type CalendarProps = {
   eventList: any[];
 };
 
-export default function Calendar({ eventList }: CalendarProps) {
+export function DayCalendar({ eventList }: CalendarProps) {
   console.log(eventList);
   const formattedEventList =
     eventList?.map((event) => {
@@ -18,24 +18,40 @@ export default function Calendar({ eventList }: CalendarProps) {
       };
     }) || [];
   return (
-    <div className="w-full grid grid-cols-2 ">
+    <div className="col-span-2">
       <FullCalendar
         plugins={[timeGridPlugin, dayGridPlugin]}
         initialView="timeGrid"
         events={formattedEventList}
         locale="en"
-        // themeSystem="bootstrap5"
         height="auto"
         aspectRatio={5}
         dayCount={2}
         headerToolbar={false}
       />
+    </div>
+  );
+}
+
+export function MonthCalendar({ eventList }: CalendarProps) {
+  console.log(eventList);
+  const formattedEventList =
+    eventList?.map((event) => {
+      const startTime = new Date(event.start.dateTime);
+      const endTime = new Date(event.end.dateTime);
+      return {
+        title: event.summary,
+        start: startTime,
+        end: endTime,
+      };
+    }) || [];
+  return (
+    <div className="col-span-3">
       <FullCalendar
         plugins={[timeGridPlugin, dayGridPlugin]}
         initialView="dayGridMonth"
         events={formattedEventList}
         locale="en"
-        // themeSystem="bootstrap5"
         height="auto"
         aspectRatio={1}
         headerToolbar={false}

@@ -43,12 +43,19 @@ export default function Weather() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      {/* <div className="text-4xl font-bold">Current Weather for Derby VT</div> */}
+      <div className="text-3xl font-bold">Current Weather</div>
       <img src={iconUrl} className="justify-center" />
       <div className="text-2xl font-bold">
         {currentWeather.weather[0].description}
       </div>
       <div className="text-2xl font-bold">{currentTemp}°F</div>
+      <div className="text-2xl font-bold">
+        Feels like{" "}
+        {Math.round(currentWeather.main.feels_like * (9 / 5) - 459.67)}
+        °F
+      </div>
+      <div className="text-1xl ">Humidity: {currentWeather.main.humidity}%</div>
+      <div className="text-1xl ">Wind: {currentWeather.wind.speed}mph</div>
     </div>
   );
 }

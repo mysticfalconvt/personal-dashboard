@@ -3,11 +3,14 @@
 @tailwind utilities;
 
 html {
+    --textColor: black;
+    --textBorderColor: gray;
+    --textBorderWidth: .03em;
     
-        color: white;
+        color: var(--textColor);
         text-shadow:
-            0.07em 0 black,
-            0 0.07em black,
-            -0.07em 0 black,
-            0 -0.07em black;
+            var(--textBorderWidth) 0 var(--textBorderColor),
+            0 var(--textBorderWidth) var(--textBorderColor),
+            calc(var(--textBorderWidth) * -1) 0 var(--textBorderColor),
+            0 calc(var(--textBorderWidth) * -1) var(--textBorderColor);
     }

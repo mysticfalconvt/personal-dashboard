@@ -72,7 +72,10 @@ export default function Weather() {
       <div className="flex flex-col">
         {futureWeather.map((chunk: any) => {
           return (
-            <div className="flex flex-row items-center justify-center p-0 m-0">
+            <div
+              className="flex flex-row items-center justify-center p-0 m-0"
+              key={chunk.date}
+            >
               <div>
                 {chunk.date.toLocaleTimeString([], {
                   hour: "2-digit",

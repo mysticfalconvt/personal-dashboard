@@ -4,7 +4,7 @@
 
 html {
     --textColor: black;
-    --textBorderColor: gray;
+    --textBorderColor: lightgray;
     --textBorderWidth: .03em;
     
         color: var(--textColor);

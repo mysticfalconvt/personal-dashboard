@@ -8,6 +8,7 @@ html {
     --textBorderWidth: .03em;
     
         color: var(--textColor);
+        font-size: small;
         text-shadow:
             var(--textBorderWidth) 0 var(--textBorderColor),
             0 var(--textBorderWidth) var(--textBorderColor),

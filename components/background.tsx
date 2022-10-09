@@ -12,7 +12,8 @@ const oneMinute = 1000 * 60;
 export default function Background() {
   const { data } = useQuery(["background"], fetchBackground, {
     initialData: { image: "1.jpg" },
-    staleTime: oneMinute,
+    refetchInterval: oneMinute,
+    staleTime: 0,
   });
   const background = data?.image;
 

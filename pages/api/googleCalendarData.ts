@@ -10,9 +10,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     "https://www.googleapis.com/auth/calendar.readonly",
     "https://www.googleapis.com/auth/calendar.events.readonly",
   ];
-  // min is yesterday and max is 2 weeks from now
-  const timeMin = new Date(new Date().setDate(new Date().getDate() - 7));
-  const timeMax = new Date(new Date().setDate(new Date().getDate() + 14));
+  const now = new Date(); // now
+  const timeMin = new Date(now.getFullYear(), now.getMonth() - 1, 1); // 1 week before current month
+  const timeMax = new Date(now.getFullYear(), now.getMonth() + 2, 0); // 1 week after current month
 
   const credentials = JSON.parse(process.env.CREDENTIALS || "");
 
@@ -36,7 +36,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     timeMin: timeMin.toISOString(),
     timeMax: timeMax.toISOString(),
-    maxResults: 50,
+    // maxResults: 50,
     singleEvents: true,
     orderBy: "startTime",
   });
@@ -46,7 +46,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     timeMin: timeMin.toISOString(),
     timeMax: timeMax.toISOString(),
-    maxResults: 50,
+    // maxResults: 50,
     singleEvents: true,
     orderBy: "startTime",
   });
@@ -56,7 +56,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     timeMin: timeMin.toISOString(),
     timeMax: timeMax.toISOString(),
-    maxResults: 50,
+    // maxResults: 50,
     singleEvents: true,
     orderBy: "startTime",
   });

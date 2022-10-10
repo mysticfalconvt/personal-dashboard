@@ -41,18 +41,22 @@ export default function DisplayTodoistShoppingList() {
           const date = new Date(item.createdAt);
           return (
             <div key={item.id}>
-              {item.content} - {date.toLocaleDateString()}
+              {item.content} -{" "}
+              <span className="text-lg">{date.toLocaleDateString()}</span>
             </div>
           );
         })}
       </div>
-      <div className="text-1xl ">
+      <div className="text-xl ">
         <div className="text-3xl font-bold">Other Tasks</div>
         {otherTasks?.map((item: any) => {
           const date = new Date(item.createdAt);
           return (
             <div key={item.id}>
-              {item.content} - {date.toLocaleDateString()} - {item.project}
+              {item.content} -{" "}
+              <span className="text-lg">
+                {date.toLocaleDateString()} - {item.project}
+              </span>
             </div>
           );
         })}

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-
+const fifteenMin = 1000 * 60 * 15;
 interface CurrentWeather {
   weather: {
     description: string;
@@ -27,8 +27,12 @@ interface CurrentWeather {
 }
 
 export default function Weather() {
-  const { data } = useQuery(["weather", "forecast"], () =>
-    fetch("api/weather").then((res) => res.json())
+  const { data } = useQuery(
+    ["weather", "forecast"],
+    () => fetch("api/weather").then((res) => res.json()),
+    {
+      refetchInterval: fifteenMin,
+    }
   );
   const currentWeather = data?.current as CurrentWeather;
   const forecast = data?.forecast;

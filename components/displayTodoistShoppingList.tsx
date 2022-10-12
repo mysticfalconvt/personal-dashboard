@@ -1,13 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import { ProjectList, taskList } from "../pages/api/todoistShoppingList";
 
 export default function DisplayTodoistShoppingList() {
-  const twoMinutes = 1000 * 60 * 2;
+  const fifteenMin = 1000 * 60 * 15;
   const { data } = useQuery(
     ["todoist"],
     () => fetch("api/todoistShoppingList").then((res) => res.json()),
     {
-      refetchInterval: twoMinutes,
+      refetchInterval: fifteenMin,
     }
   );
 

@@ -51,6 +51,8 @@ export function DayCalendar({ eventList }: CalendarProps) {
         aspectRatio={5}
         dayCount={2}
         headerToolbar={false}
+        nowIndicator={true}
+        now={new Date()}
       />
     </div>
   );
@@ -70,6 +72,8 @@ export function MonthCalendar({ eventList }: CalendarProps) {
         height="auto"
         aspectRatio={1}
         headerToolbar={false}
+        nowIndicator={true}
+        now={new Date()}
       />
     </div>
   );

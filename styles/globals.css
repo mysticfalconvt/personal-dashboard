@@ -6,12 +6,14 @@ html {
     --textColor: black;
     --textBorderColor: lightgray;
     --textBorderWidth: .03em;
-    
-        color: var(--textColor);
-        font-size: small;
-        text-shadow:
-            var(--textBorderWidth) 0 var(--textBorderColor),
-            0 var(--textBorderWidth) var(--textBorderColor),
-            calc(var(--textBorderWidth) * -1) 0 var(--textBorderColor),
-            0 calc(var(--textBorderWidth) * -1) var(--textBorderColor);
-    }
+    --fc-now-indicator-color: rgb(0, 225, 255);
+    /* --fc-now-indicator-arrow-color: var(--fc-now-indicator-color); */
+
+    color: var(--textColor);
+    font-size: small;
+    text-shadow:
+    var(--textBorderWidth) 0 var(--textBorderColor),
+    0 var(--textBorderWidth) var(--textBorderColor),
+    calc(var(--textBorderWidth) * -1) 0 var(--textBorderColor),
+    0 calc(var(--textBorderWidth) * -1) var(--textBorderColor);
+}

@@ -17,7 +17,6 @@ export default function InfoContainer() {
   );
 
   const calendarList: any = data?.events;
-  console.log(calendarList?.filter((event: any) => event.summary === "test"));
 
   return (
     <div className="grid grid-cols-6 gap-6 w-full">

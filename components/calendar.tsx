@@ -14,14 +14,22 @@ interface Event {
 
 const getFormattedEvents = (eventList: any[]): Event[] => {
   const formattedEvents: Event[] = eventList.map((event): Event => {
-    const startTime = new Date(event.start.dateTime);
-    const endTime = new Date(event.end.dateTime);
-
+    let startTime = new Date(event.start.dateTime);
+    let endTime = new Date(event.end.dateTime);
+    const allDay = event.start.date ? true : false;
+    if (event.start.date) {
+      // add 1 day to start and end times if all day event
+      const startDate = new Date(event.start.date);
+      const endDate = new Date(event.end.date);
+      startTime = new Date(startDate.setDate(startDate.getDate() + 1));
+      endTime = new Date(endDate.setDate(endDate.getDate() + 1));
+    }
     const newEvent = {
       title: event.summary,
       start: startTime,
       end: endTime,
       color: event.eventColor,
+      allDay,
     };
     return newEvent;
   });

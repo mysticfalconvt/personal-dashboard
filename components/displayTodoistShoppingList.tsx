@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
+import { todoRefetchTime } from "../constants";
 
 export default function DisplayTodoistShoppingList() {
-  const fifteenMin = 1000 * 60 * 15;
   const { data } = useQuery(
     ["todoist"],
     () => fetch("api/todoistShoppingList").then((res) => res.json()),
     {
-      refetchInterval: fifteenMin,
+      refetchInterval: todoRefetchTime,
     }
   );
 

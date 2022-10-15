@@ -3,6 +3,7 @@ const fifteenMinutes = 1000 * 60 * 15;
 import Weather from "./weather";
 import DisplayTodoistShoppingList from "./displayTodoistShoppingList";
 import { DayCalendar, MonthCalendar } from "./calendar";
+import { calendarRefetchTime } from "../constants";
 
 export default function InfoContainer() {
   const { data } = useQuery(
@@ -11,11 +12,12 @@ export default function InfoContainer() {
       return fetch("/api/googleCalendarData").then((res) => res.json());
     },
     {
-      refetchInterval: fifteenMinutes,
+      refetchInterval: calendarRefetchTime,
     }
   );
 
   const calendarList: any = data?.events;
+  console.log(calendarList?.filter((event: any) => event.summary === "test"));
 
   return (
     <div className="grid grid-cols-6 gap-6 w-full">

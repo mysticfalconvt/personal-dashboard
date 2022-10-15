@@ -1,18 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
+import { backgroundRefetchTime } from "../constants";
 
 const fetchBackground = async () => {
   const res = await fetch("api/backgroundImage");
   return res.json();
 };
 
-const oneMinute = 1000 * 60;
-
 // get a background image from the background api
 export default function Background() {
   const { data } = useQuery(["background"], fetchBackground, {
     initialData: { image: "1.jpg" },
-    refetchInterval: oneMinute,
+    refetchInterval: backgroundRefetchTime,
     staleTime: 0,
   });
   const background = data?.image;

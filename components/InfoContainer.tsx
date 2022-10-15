@@ -4,6 +4,7 @@ import Weather from "./weather";
 import DisplayTodoistShoppingList from "./displayTodoistShoppingList";
 import { DayCalendar, MonthCalendar } from "./calendar";
 import { calendarRefetchTime } from "../constants";
+import { Zenfolio } from "./zenfolio";
 
 export default function InfoContainer() {
   const { data } = useQuery(
@@ -26,6 +27,7 @@ export default function InfoContainer() {
         <DisplayTodoistShoppingList />
       </div>
       <MonthCalendar eventList={calendarList} />
+      <Zenfolio />
     </div>
   );
 }

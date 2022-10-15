@@ -1,5 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { stringify } from "querystring";
+// import { stringify } from "querystring";
+const convert = require("xml-js");
+// import {convert}
 
 const zenfolioUrl = "https://api.zenfolio.com/api/1.8/zfapi.asmx";
 const zenfolioProfile =
@@ -8,6 +10,7 @@ const userAgent = "Boskind photo viewer";
 const photoId = "h1c115931";
 const user = process.env.ZENFOLIO_USER;
 const password = process.env.ZENFOLIO_PASSWORD;
+const galleryId = process.env.ZENFOLIO_GALLERY_ID;
 export default async function getPhoto(
   req: NextApiRequest,
   res: NextApiResponse
@@ -20,30 +23,29 @@ export default async function getPhoto(
     "Content-Type": "text/xml",
   };
 
-  const profile = await fetch(`${zenfolioProfile}?loginName=${user}`, {
-    method: "POST",
-    headers: headers,
-    body: zenfolioRequest,
-  });
+  //   const profile = await fetch(`${zenfolioProfile}?loginName=${user}`, {
+  //     method: "POST",
+  //     headers: headers,
+  //     body: zenfolioRequest,
+  //   });
 
-  const profileData = await profile.text();
+  //   const profileData = await profile.text();
 
-  const convert = require("xml-js");
-  const userProfile = convert.xml2json(profileData, {
-    compact: true,
-    spaces: 4,
-  });
-  const profileJson = JSON.parse(userProfile);
-  const featuredPhotoSets = profileJson.User.FeaturedPhotoSets.PhotoSet;
-  const photoSetIds = featuredPhotoSets.map((photoSet: any) => {
-    return {
-      id: photoSet.Id._text,
-      //   count: photoSet.Count._text,
-    };
-  });
+  //   const userProfile = convert.xml2json(profileData, {
+  //     compact: true,
+  //     spaces: 4,
+  //   });
+  //   const profileJson = JSON.parse(userProfile);
+  //   const featuredPhotoSets = profileJson.User.FeaturedPhotoSets.PhotoSet;
+  //   const photoSetIds = featuredPhotoSets.map((photoSet: any) => {
+  //     return {
+  //       id: photoSet.Id._text,
+  //       //   count: photoSet.Count._text,
+  //     };
+  //   });
 
   const photoSetData = await fetch(
-    `${zenfolioUrl}/LoadPhotoSet?loginName=${user}&photoSetId=${photoSetIds[0].id}`,
+    `${zenfolioUrl}/LoadPhotoSet?loginName=${user}&photoSetId=${galleryId}`,
     {
       method: "POST",
       headers: headers,
@@ -59,7 +61,7 @@ export default async function getPhoto(
   const photoSetCount = photoSetDataJson.PhotoSet.PhotoCount._text;
 
   const photoSetPhotos = await fetch(
-    `${zenfolioUrl}/LoadPhotoSetPhotos?loginName=${user}&photoSetId=${photoSetIds[0].id}&startingIndex=0&numberOfPhotos=${photoSetCount}`,
+    `${zenfolioUrl}/LoadPhotoSetPhotos?loginName=${user}&photoSetId=${galleryId}&startingIndex=0&numberOfPhotos=${photoSetCount}`,
     {
       method: "POST",
       headers: headers,
@@ -78,6 +80,6 @@ export default async function getPhoto(
     (photo: any) => photo.OriginalUrl._text
   );
 
-  console.log(photos);
+  //   console.log(photoSetIds);
   res.status(200).json(photos);
 }

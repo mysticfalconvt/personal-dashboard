@@ -27,7 +27,7 @@ export default function InfoContainer() {
         <DisplayTodoistShoppingList />
       </div>
       <MonthCalendar eventList={calendarList} />
-      <Zenfolio />
+      {/* <Zenfolio /> */}
     </div>
   );
 }

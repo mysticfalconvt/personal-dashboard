@@ -25,3 +25,15 @@ html {
     --fc-now-indicator-color: rgb(0, 225, 255);
     /* --fc-now-indicator-arrow-color: var(--fc-now-indicator-color); */
 }
+
+.fc-col-header-cell {
+    color: black;
+   opacity: 1;
+   background: none;
+   background-color: none;
+}
+.fc-scrollgrid-section-header {
+   opacity: 0.5;
+   background: none;
+   background-color: none;
+}

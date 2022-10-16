@@ -53,6 +53,7 @@ export function DayCalendar({ eventList }: CalendarProps) {
         headerToolbar={false}
         nowIndicator={true}
         now={new Date()}
+        dayHeaderClassNames={["text-black"]}
       />
     </div>
   );
@@ -74,6 +75,7 @@ export function MonthCalendar({ eventList }: CalendarProps) {
         headerToolbar={false}
         nowIndicator={true}
         now={new Date()}
+        dayHeaderClassNames={["text-black"]}
       />
     </div>
   );

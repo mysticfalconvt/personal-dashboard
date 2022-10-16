@@ -4,13 +4,12 @@ const convert = require("xml-js");
 // import {convert}
 
 const zenfolioUrl = "https://api.zenfolio.com/api/1.8/zfapi.asmx";
-const zenfolioProfile =
-  "https://api.zenfolio.com/api/1.8/zfapi.asmx/LoadPublicProfile";
+
 const userAgent = "Boskind photo viewer";
-const photoId = "h1c115931";
 const user = process.env.ZENFOLIO_USER;
 const password = process.env.ZENFOLIO_PASSWORD;
 const galleryId = process.env.ZENFOLIO_GALLERY_ID;
+
 export default async function getPhoto(
   req: NextApiRequest,
   res: NextApiResponse

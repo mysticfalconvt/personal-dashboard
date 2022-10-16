@@ -6,7 +6,7 @@ html {
     --textColor: black;
     --textBorderColor: lightgray;
     --textBorderWidth: .03em;
-    --fc-now-indicator-color: rgb(0, 225, 255);
+    --fc-now-indicator-color: red;
     /* --fc-now-indicator-arrow-color: var(--fc-now-indicator-color); */
 
     color: var(--textColor);
@@ -36,4 +36,9 @@ html {
    opacity: 0.5;
    background: none;
    background-color: none;
+}
+
+.fc-timegrid-now-indicator-line{
+    border-top: 3px  solid var(--fc-now-indicator-color) !important;
+    transform: translateY(-2px);
 }

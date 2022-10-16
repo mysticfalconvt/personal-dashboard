@@ -58,7 +58,7 @@ export default function Weather() {
   // console.log(futureWeather);
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center z-20">
       <div className="text-3xl font-bold">Current Weather</div>
       <img src={iconUrl} className="justify-center" />
       <div className="text-2xl font-bold">

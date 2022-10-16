@@ -18,7 +18,7 @@ const Home: NextPage = () => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <main
-          className={`flex w-full flex-1 flex-col items-center justify-start px-20 text-center z-10 `}
+          className={`flex w-full flex-1 flex-col items-center justify-start px-20 text-center z-0`}
         >
           <InfoContainer />
         </main>

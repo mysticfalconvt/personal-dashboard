@@ -22,14 +22,16 @@ export default function InfoContainer() {
   const calendarList: any = data?.events;
 
   return (
-    <div className={`grid grid-cols-6 gap-6 w-full ${theme}`}>
+    <>
       <Background setTheme={setTextTheme} />
-      <DayCalendar eventList={calendarList} />
-      <div>
-        <Weather />
-        <DisplayTodoistShoppingList />
+      <div className={`grid grid-cols-6 gap-6 w-full z-10 ${theme}`}>
+        <DayCalendar eventList={calendarList} />
+        <div>
+          <Weather />
+          <DisplayTodoistShoppingList />
+        </div>
+        <MonthCalendar eventList={calendarList} />
       </div>
-      <MonthCalendar eventList={calendarList} />
-    </div>
+    </>
   );
 }

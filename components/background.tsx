@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import Image from "next/image";
 import { useState } from "react";
-import { backgroundRefetchTime } from "../constants";
+import { backgroundRefetchTime, photoChangeTime } from "../constants";
 
 const fetchBackground = async () => {
   const res = await fetch("api/getPhoto");
@@ -12,7 +11,7 @@ const fetchBackground = async () => {
 export default function Background() {
   const { data } = useQuery(["background"], fetchBackground, {
     initialData: ["https://www.nekpics.com/img/s/v-10/p1113504077.jpg"],
-    // refetchInterval: backgroundRefetchTime,
+    refetchInterval: backgroundRefetchTime,
     staleTime: 0,
   });
 
@@ -21,7 +20,7 @@ export default function Background() {
   // switch to a new image every n seconds
   setTimeout(() => {
     setImage(data[Math.floor(Math.random() * data.length)]);
-  }, backgroundRefetchTime);
+  }, photoChangeTime);
   //get random image from the array of image urls
 
   return (

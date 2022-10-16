@@ -39,7 +39,7 @@ export default function Background({ setTheme }: Props) {
   setTimeout(async () => {
     const color = await getColor(nextImage);
     const textColor = getTextTheme(color);
-    console.log("Text color: ", textColor);
+    // console.log("Text color: ", textColor);
     setTheme(getTextTheme(color));
     setImage(nextImage);
 
